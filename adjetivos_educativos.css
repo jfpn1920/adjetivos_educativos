@@ -1,0 +1,71 @@
+/* ===== VARIABLES: colores reutilizables ===== */
+:root {
+  --tinta: #1f3a8a;        /* azul de bolígrafo para títulos */
+  --texto: #2b2f3a;        /* color del texto general */
+  --cuadricula: #dbe6f3;   /* líneas de la cuadrícula del fondo */
+  --margen: #e46a6a;       /* línea roja de margen de cuaderno */
+  --resaltador: #ffe45c;   /* amarillo de resaltador */
+  --bien: #2f9e63;         /* verde para respuestas correctas */
+  --mal: #d9485f;          /* rojo para respuestas incorrectas */
+}
+/* Quita márgenes por defecto y simplifica el cálculo de tamaños */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+/* Fondo con cuadrícula hecha solo con CSS (dos degradados cruzados) */
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 32px 16px;
+    font-family: 'Nunito', Arial, sans-serif;
+    color: var(--texto);
+    background-color: #eef4fb;
+    background-image:
+        linear-gradient(var(--cuadricula) 1px, transparent 1px),
+        linear-gradient(90deg, var(--cuadricula) 1px, transparent 1px);
+    background-size: 28px 28px;
+}  
+/* Hoja de cuaderno con línea roja de margen a la izquierda */
+.hoja { width: 100%; max-width: 600px; padding: 32px 28px 32px 56px; background: #fff; border-left: 3px solid var(--margen); border-radius: 6px; box-shadow: 0 6px 18px rgba(31, 58, 138, 0.15); }
+/* Títulos con letra manuscrita */
+h1, h2 { font-family: 'Patrick Hand', cursive; color: var(--tinta); font-weight: 400; }
+h1 { font-size: 2.4rem; }
+h2 { font-size: 1.7rem; margin-bottom: 14px; }
+.subtitulo { margin: 6px 0 18px; }
+/* Caja de recordatorio con estilo de resaltador */
+.recuerda { padding: 10px 14px; margin-bottom: 24px; background: #fff9d6; border-left: 5px solid var(--resaltador); line-height: 1.5; }
+.recuerda em { font-weight: 700; font-style: normal; background: var(--resaltador); }
+/* Clase que oculta cualquier elemento (JS la agrega y la quita) */
+.oculto { display: none !important; }
+/* Campo de nombre y su etiqueta */
+.etiqueta { display: block; margin-bottom: 6px; font-weight: 700; }
+input { width: 100%; padding: 12px; font: inherit; border: 2px solid var(--tinta); border-radius: 6px; }
+.error { margin-top: 8px; color: var(--mal); font-weight: 700; }
+/* Botón principal */
+.boton { margin-top: 18px; padding: 12px 26px; font: inherit; font-weight: 700; color: #fff; background: var(--tinta); border: none; border-radius: 6px; cursor: pointer; }
+.boton:hover { background: #162a66; }
+/* Botón con aspecto de enlace */
+.boton-texto { margin: 18px 0 0 16px; font: inherit; color: var(--tinta); background: none; border: none; text-decoration: underline; cursor: pointer; }
+/* Foco visible para quien navega con el teclado */
+button:focus-visible, input:focus-visible { outline: 3px solid var(--resaltador); outline-offset: 2px; }
+/* Barra superior con saludo, progreso y puntaje */
+.barra { display: flex; justify-content: space-between; gap: 8px; font-weight: 700; font-size: 0.9rem; }
+/* Barra de progreso: fondo gris y parte llena azul */
+.progreso-fondo { height: 8px; margin: 10px 0 22px; background: var(--cuadricula); border-radius: 4px; }
+.progreso-barra { height: 100%; width: 0; background: var(--tinta); border-radius: 4px; transition: width 0.3s; }
+/* Frase del ejercicio */
+.frase { font-family: 'Patrick Hand', cursive; font-size: 1.9rem; line-height: 1.3; color: var(--tinta); }
+/* Lista de opciones: una debajo de otra */
+.opciones { display: grid; gap: 10px; margin-top: 20px; }
+.opcion { padding: 12px; font: inherit; font-size: 1.1rem; text-align: left; background: #fff; border: 2px solid var(--tinta); border-radius: 6px; cursor: pointer; }
+.opcion:hover:not(:disabled) { background: var(--resaltador); }
+/* Estados después de responder */
+.opcion.correcta { background: var(--bien); border-color: var(--bien); color: #fff; }
+.opcion.incorrecta { background: var(--mal); border-color: var(--mal); color: #fff; }
+.opcion:disabled { cursor: default; }
+/* Mensajes de resultado */
+.mensaje { min-height: 1.5em; margin-top: 16px; font-weight: 700; }
+.resultado { font-family: 'Patrick Hand', cursive; font-size: 3rem; color: var(--tinta); }
+/* Pequeño rebote cuando una opción cambia de color al responder */
+.opcion.correcta, .opcion.incorrecta { animation: rebote 0.25s; }
+@keyframes rebote { 50% { transform: scale(1.03); } }

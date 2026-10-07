@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>adjetivos educativos</title>
+    <link rel="stylesheet" href="adjetivos_educativos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <script src="adjetivos_educativos.js" defer></script>
+</head>
+<body>
+    <!----------------------------------------->
+    <!--|estructuracion_adjetivos_educativos|-->
+    <!----------------------------------------->
+    <main class="hoja">
+        <!-- Encabezado con el título del ejercicio -->
+        <header class="encabezado">
+            <h1>Adjetivos Educativos</h1>
+            <p class="subtitulo">Elige la palabra que es un adjetivo y completa la frase.</p>
+        </header>
+        <!-- Recordatorio: qué es un adjetivo -->
+        <aside class="recuerda">
+            <strong>Recuerda:</strong>
+            <!-- Los adjetivos dicen cómo es un sustantivo -->
+            un adjetivo dice cómo es algo o alguien.
+            Ejemplo: casa <em>grande</em>, niña <em>feliz</em>.
+        </aside>
+        <!-- PANTALLA 1: el usuario escribe su nombre para comenzar -->
+        <section id="pantalla-inicio" class="pantalla">
+            <h2>¿Cómo te llamas?</h2>
+            <!-- Etiqueta asociada al campo para mejorar la accesibilidad -->
+            <label for="campo-nombre" class="etiqueta">Tu nombre</label>
+            <!-- Campo de texto para el nombre (se guarda en localStorage) -->
+            <input id="campo-nombre" type="text" placeholder="Escribe tu nombre" maxlength="20" autocomplete="off">
+            <!-- Mensaje de error si el campo está vacío -->
+            <p id="error-nombre" class="error oculto">Escribe tu nombre para comenzar.</p>
+            <!-- Botón que inicia el ejercicio -->
+            <button id="btn-comenzar" class="boton">Comenzar</button>
+        </section>
+        <!-- PANTALLA 2: el ejercicio con las preguntas -->
+        <section id="pantalla-juego" class="pantalla oculto">
+            <!-- Barra de información: saludo, progreso y puntaje -->
+            <div class="barra">
+                <span id="saludo"></span>
+                <span id="progreso"></span>
+                <span id="puntaje"></span>
+            </div>
+            <!-- Barra de progreso: el ancho de la parte llena lo cambia JavaScript -->
+            <div class="progreso-fondo">
+                <div id="progreso-barra" class="progreso-barra"></div>
+            </div>
+            <!-- Frase con el espacio en blanco que se debe completar -->
+            <p id="frase" class="frase"></p>
+            <!-- Aquí JavaScript crea los botones con las opciones -->
+            <div id="opciones" class="opciones"></div>
+            <!-- Mensaje de acierto o error después de elegir -->
+            <p id="mensaje" class="mensaje"></p>
+            <!-- Botones de acción del ejercicio -->
+            <div class="acciones">
+                <!-- Pasa a la siguiente pregunta (oculto hasta responder) -->
+                <button id="btn-siguiente" class="boton oculto">Siguiente</button>
+                <!-- Borra los datos guardados y vuelve al inicio -->
+                <button id="btn-salir" class="boton-texto">Cambiar de nombre</button>
+            </div>
+        </section>
+        <!-- PANTALLA 3: resultado final -->
+        <section id="pantalla-final" class="pantalla oculto">
+            <h2 id="titulo-final"></h2>
+            <!-- Puntaje total obtenido -->
+            <p id="resultado" class="resultado"></p>
+            <!-- Mensaje de ánimo según el puntaje -->
+            <p id="comentario"></p>
+            <!-- Botón para borrar el progreso y empezar de nuevo -->
+            <button id="btn-reiniciar" class="boton">Intentar de nuevo</button>
+        </section>
+    </main>
+    <!-- Aviso por si el navegador tiene JavaScript desactivado -->
+    <noscript>Activa JavaScript para poder usar este ejercicio.</noscript>
+</body>
+</html>
