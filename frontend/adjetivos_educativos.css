@@ -1,0 +1,201 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+:root {
+    --tinta: #1f3a8a;
+    --texto: #2b2f3a;
+    --cuadricula: #dbe6f3;
+    --margen: #e46a6a;
+    --resaltador: #ffe45c;
+    --bien: #2f9e63;
+    --mal: #d9485f;
+}
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 32px 16px;
+    font-family: 'Nunito', Arial, sans-serif;
+    color: var(--texto);
+    background-color: #eef4fb;
+    background-image:
+        linear-gradient(var(--cuadricula) 1px, transparent 1px),
+        linear-gradient(90deg, var(--cuadricula) 1px, transparent 1px);
+    background-size: 28px 28px;
+}
+/*---------------------------------*/
+/*--|estilo_adjetivos_educativos|--*/
+/*---------------------------------*/
+.hoja {
+    width: 100%;
+    max-width: 600px;
+    padding: 32px 28px 32px 56px;
+    background: #fff;
+    border-left: 3px solid var(--margen);
+    border-radius: 6px;
+    box-shadow: 0 6px 18px rgba(31, 58, 138, 0.15);
+}
+h1, h2 {
+    font-family: 'Patrick Hand', cursive;
+    color: var(--tinta);
+    font-weight: 400;
+}
+h1 {
+    font-size: 2.4rem;
+}
+h2 {
+    font-size: 1.7rem;
+    margin-bottom: 14px;
+}
+.subtitulo {
+    margin: 6px 0 18px;
+}
+.oculto {
+    display: none !important;
+}
+.boton {
+    margin-top: 18px;
+    padding: 12px 26px;
+    font: inherit;
+    font-weight: 700;
+    color: #fff;
+    background: var(--tinta);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.boton:hover {
+    background: #162a66;
+}
+.boton-texto {
+    margin: 18px 0 0 16px;
+    font: inherit;
+    color: var(--tinta);
+    background: none;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+}
+button:focus-visible, input:focus-visible {
+    outline: 3px solid var(--resaltador);
+    outline-offset: 2px;
+}
+/*-------------------------*/
+/*--|estilo_recordatorio|--*/
+/*-------------------------*/
+.recuerda {
+    padding: 10px 14px;
+    margin-bottom: 24px;
+    background: #fff9d6;
+    border-left: 5px solid var(--resaltador);
+    line-height: 1.5;
+}
+.recuerda em {
+    font-weight: 700;
+    font-style: normal;
+    background: var(--resaltador);
+}
+/*----------------------------*/
+/*--|estilo_pantalla_inicio|--*/
+/*----------------------------*/
+.etiqueta {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 700;
+}
+input {
+    width: 100%;
+    padding: 12px;
+    font: inherit;
+    border: 2px solid var(--tinta);
+    border-radius: 6px;
+}
+.error {
+    margin-top: 8px;
+    color: var(--mal);
+    font-weight: 700;
+}
+/*---------------------------*/
+/*--|estilo_pantalla_juego|--*/
+/*---------------------------*/
+.barra {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+.progreso-fondo {
+    height: 8px;
+    margin: 10px 0 22px;
+    background: var(--cuadricula);
+    border-radius: 4px;
+}
+.progreso-barra {
+    height: 100%;
+    width: 0;
+    background: var(--tinta);
+    border-radius: 4px;
+    transition: width 0.3s;
+}
+.frase {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.9rem;
+    line-height: 1.3;
+    color: var(--tinta);
+}
+.opciones {
+    display: grid;
+    gap: 10px;
+    margin-top: 20px;
+}
+.opcion {
+    padding: 12px;
+    font: inherit;
+    font-size: 1.1rem;
+    text-align: left;
+    background: #fff;
+    border: 2px solid var(--tinta);
+    border-radius: 6px;
+    cursor: pointer;
+}
+.opcion:hover:not(:disabled) {
+    background: var(--resaltador);
+}
+.opcion.correcta {
+    background: var(--bien);
+    border-color: var(--bien);
+    color: #fff;
+}
+.opcion.incorrecta {
+    background: var(--mal);
+    border-color: var(--mal);
+    color: #fff;
+}
+.opcion:disabled {
+    cursor: default;
+}
+.opcion.correcta, .opcion.incorrecta {
+    animation: rebote 0.25s;
+}
+@keyframes rebote {
+    50% {
+        transform: scale(1.03);
+    }
+}
+.mensaje {
+    min-height: 1.5em;
+    margin-top: 16px;
+    font-weight: 700;
+}
+/*---------------------------*/
+/*--|estilo_pantalla_final|--*/
+/*---------------------------*/
+.resultado {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 3rem;
+    color: var(--tinta);
+}
